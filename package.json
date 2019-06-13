@@ -1,6 +1,6 @@
 {
   "name": "sprite-extend-echarts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The standard project template.",
   "main": "index.js",
   "scripts": {

@@ -9,6 +9,6 @@ export function install({use}) {
   return [
     EChart,
   ].reduce((pkg, Node) => {
-    return Object.assign(pkg, spritejs.use(Node));
+    return Object.assign(pkg, use(Node));
   }, {});
 }
