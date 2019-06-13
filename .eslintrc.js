@@ -9,6 +9,8 @@ const libName = toCamelCase(packageConfig.name);
 module.exports = {
   globals: {
     [libName]: libName,
+    echarts: 'echarts',
+    spriteECharts: 'spriteECharts',
   },
   extends:  "eslint-config-sprite",
   plugins: ['html'],

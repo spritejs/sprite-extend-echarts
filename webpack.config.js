@@ -2,10 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const packageConfig = require('./package.json');
 
-function toCamelCase(str) {
-  return str.replace(/-([a-z])/ig, (s, p1) => p1.toUpperCase());
-}
-
 module.exports = function (env = {}) {
   return {
     mode: env.production ? 'production' : 'none',
@@ -14,7 +10,7 @@ module.exports = function (env = {}) {
       path: path.resolve(__dirname, 'dist'),
       filename: `${packageConfig.name}.js`,
       publicPath: '/js/',
-      library: [toCamelCase(packageConfig.name)],
+      library: ['spriteECharts'],
       libraryTarget: 'umd',
     },
     // resolve: {
