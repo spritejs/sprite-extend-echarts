@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --env.server=examples --watch-poll",
     "compile": "webpack --env.production=true",
+    "prepublishOnly": "webpack --env.production=true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
