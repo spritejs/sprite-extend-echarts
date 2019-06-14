@@ -4,12 +4,8 @@ export default function install({use, utils, registerNodeType, BaseSprite}) {
       const container = document.createElement('canvas');
       const layer = this.layer;
 
-      const pixelRatioX = layer.resolution[0] / layer.viewport[0];
-      const pixelRatioY = layer.resolution[1] / layer.viewport[1];
-      container.width = w / pixelRatioX;
-      container.height = h / pixelRatioY;
-
-      this.pixelRatio = [pixelRatioX, pixelRatioY];
+      container.width = w / 2;
+      container.height = h / 2;
 
       const chart = echarts.init(container);
 
@@ -28,8 +24,8 @@ export default function install({use, utils, registerNodeType, BaseSprite}) {
         const originalEvent = e.originalEvent;
         const anchor = this.attr('anchor');
         const cz = this.clientSize;
-        const offsetX = (e.offsetX + anchor[0] * cz[0]) / pixelRatioX;
-        const offsetY = (e.offsetY + anchor[1] * cz[1]) / pixelRatioY;
+        const offsetX = (e.offsetX + anchor[0] * cz[0]) / 2;
+        const offsetY = (e.offsetY + anchor[1] * cz[1]) / 2;
         let type = originalEvent.type;
         if(type === 'mouseleave') type = 'mouseout';
         const newEvent = new MouseEvent(originalEvent.type, {
@@ -49,10 +45,9 @@ export default function install({use, utils, registerNodeType, BaseSprite}) {
           srcElement: originalEvent.srcElement,
           target: originalEvent.target,
           toElement: originalEvent.toElement,
-          view: originalEvent.view,
+          // view: originalEvent.view,
           which: originalEvent.witch,
         });
-
         this.chart.getDom().dispatchEvent(newEvent);
       };
 
@@ -77,9 +72,10 @@ export default function install({use, utils, registerNodeType, BaseSprite}) {
       const canvas = this.chart.getRenderedCanvas({pixelRatio: 2});
 
       if(w !== canvas.width || h !== canvas.height) {
-        const width = w / this.pixelRatio[0];
-        const height = h / this.pixelRatio[1];
+        const width = w / 2;
+        const height = h / 2;
         this.chart.resize({width, height});
+        console.log('resize');
       }
       drawingContext.drawImage(canvas, 0, 0, w, h);
     }

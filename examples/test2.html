@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SandBox</title>
+  <script src="/js/spritejs.js"></script>
+  <script crossorigin="anonymous" src="/js/echarts.js"></script>
+  <script src="/js/sprite-extend-echarts.js"></script>
+  <style>
+    html,body{
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+    #paper{
+      width: 100%;
+      height: 100%;
+    }  
+  </style>
+</head>
+<body>
+  <div id="paper"></div>
+</body>
+</html>
+
+<script>
+const {Scene, EChart} = spritejs;
+
+const scene = new Scene('#paper', {
+  viewport: [1200, 1200],
+  resolution: [1200, 1200],
+});
+
+const layer = scene.layer('fglayer');
+document.querySelector('#paper canvas').style.backgroundColor = '#fff';
+
+const chart = new EChart({
+  size: [700, 700],
+  anchor: [0.5, 0.5],
+  pos: [600, 600],
+  // bgcolor: 'red',
+});
+
+chart.setOption({
+  title: {
+    text: 'ECharts 示例',
+  },
+  tooltip: {},
+  legend: {
+    data: ['销量'],
+  },
+  xAxis: {
+    data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+  },
+  yAxis: {},
+  series: [{
+    name: '销量',
+    type: 'bar',
+    data: [5, 20, 36, 10, 10, 20],
+  }],
+});
+
+layer.append(chart);
+</script>
