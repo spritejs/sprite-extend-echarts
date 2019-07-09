@@ -5,7 +5,7 @@ if(typeof window !== 'undefined' && window.spritejs) {
   window.spritejs.use(install);
 }
 
-export function install({use}) {
+export default function install({use}) {
   return [
     EChart,
   ].reduce((pkg, Node) => {
