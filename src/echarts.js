@@ -75,7 +75,6 @@ export default function install({use, utils, registerNodeType, BaseSprite}) {
         const width = w / 2;
         const height = h / 2;
         this.chart.resize({width, height});
-        console.log('resize');
       }
       drawingContext.drawImage(canvas, 0, 0, w, h);
     }
